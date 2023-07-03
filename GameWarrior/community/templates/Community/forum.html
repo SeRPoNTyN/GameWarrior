@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load news %}
+{% load comments %}
+<!-- Latest news section -->
+{%  get_recent_news 3  %}
+<!-- Latest news section end -->
+
+{% block content %}
+<!-- Page info section -->
+<section class="page-info-section set-bg" data-setbg="{% static 'img/page-top-bg/4.jpg' %}">
+    <div class="pi-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 text-white">
+                    <h2>Our Community</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
+                        scelerisque, at rutrum nulla dictum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page info section -->
+
+
+<!-- Page section -->
+<section class="page-section community-page set-bg" data-setbg="{% static 'img/community-bg.jpg' %} ">
+    <div class="community-warp spad">
+        <div class="container">
+            <div class="row">
+                {% get_count_of_comments %}
+                <div class="col-md-6 text-lg-right">
+                </div>
+            </div>
+            <ul class="community-post-list">
+                {% for i in comments%}
+                <li>
+                    <div class="community-post">
+                        <div class="author-avator set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+                        <div class="post-content">
+                            <div class="row">
+                                <div class="col">
+                                    <h5>{{i.user.username}}</h5>
+                                </div>
+                                {% if user.username == i.user.username %}
+                                <div class="col">
+                                    <a href="{{i.delete_comment}}"><h5 align="right"><span>Delete</span></h5></a>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="post-date">{{i.created_at}}</div>
+                            <p>{{i.content}}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+                        {% include 'inc/_paginator.html' %}
+
+        </div>
+        <div class="row justify-content-around">
+            <form action="{% url 'add_comment' %}">
+                <button class="site-btn btn-sm ">Add Comment</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+{%  get_recent_news 3  %}
+<!-- Page section end -->
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load news %}
+
+{% block content %}
+{% get_recent_news 3 %}
+<section class="tournaments-section spad">
+    <div class="container">
+
+        <div class="card bg-dark">
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{%  url 'login'  %}" method="post">
+
+                            {% csrf_token %}
+                            <h5>Sign in: </h5>
+                            <br>
+                            {{ form.as_p }}
+                            {{ form.non_field.errors }}
+
+                            <h6>Don't have any account? <a href="{% url 'register' %}">Sign Up</a></h6>
+                            <br>
+                            <button type="submit" class="btn btn-success">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% get_recent_news 3 %}
+{% endblock %}

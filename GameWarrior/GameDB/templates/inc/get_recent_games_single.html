@@ -1,0 +1,10 @@
+{% for games in recent_games_single %}
+<div class="lb-item">
+    <div class="lb-thumb set-bg" data-setbg="{{games.image.url}}"></div>
+    <div class="lb-content">
+        <div class="lb-date">{{games.created_at}}</div>
+        <p><a href="{{games.get_absolute_url}}">{{games.title}}</a></p>
+        <a href="#" class="lb-author">By {{games.developer}}</a>
+    </div>
+</div>
+{% endfor %}

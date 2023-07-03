@@ -1,0 +1,11 @@
+{% load static %}
+{% for i in recent_comments %}
+<div class="tc-item">
+    <div class="tc-thumb set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+    <div class="tc-content">
+        <p><a href="{% url 'forum' %}">{{i.user.username}}</a></p>
+        <a href="{% url 'forum' %}">{{i.content|safe|truncatechars_html:10}}</a>
+        <div class="tc-date">{{i.created_at}}</div>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,41 @@
+{% load static %}
+{% load news %}
+{% load comments %}
+<!-- Footer top section -->
+
+	<section class="footer-top-section">
+		<div class="container">
+			<div class="footer-top-bg">
+				<img src="{% static 'img/footer-top-bg.png' %}" alt="">
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="footer-logo text-white">
+						<img src="{% static 'img/footer-logo.png' %}" alt="">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-widget mb-5 mb-md-0">
+						<h4 class="fw-title">Latest News</h4>
+						<div class="latest-blog">
+
+							{% get_recent_news_bottom 3 %}
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-widget">
+						<h4 class="fw-title">Recent Comments</h4>
+						<div class="top-comment">
+
+						{% get_recent_comments 4 %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer top section end -->

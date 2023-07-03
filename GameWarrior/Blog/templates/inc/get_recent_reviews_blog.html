@@ -1,0 +1,28 @@
+{% load static %}
+<div class="container">
+    <div class="section-title text-white">
+        <div class="cata new">new</div>
+        <h2>Recent Reviews</h2>
+    </div>
+    <div class="row text-white">
+        {% for review in recent_reviews %}
+        <div class="col-lg-3 col-md-6">
+            <div class="review-item">
+                <div class="review-cover set-bg" data-setbg="{{review.game.image.url}}">
+                    {% if review.score > 7.9 %}
+                    <div class="score green">{{review.score}}</div>
+                    {% elif review.score < 3 %}
+                    <div class="score pink">{{review.score}}</div>
+                    {% else %}
+                    <div class="score yellow">{{review.score}}</div>
+                    {% endif %}
+                </div>
+                <div class="review-text">
+                    <a href="{{review.get_absolute_url}}"><h5>{{review.title|truncatewords:5}}</h5></a>
+                    <p>{{review.content|safe|linebreaks|truncatewords_html:10}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

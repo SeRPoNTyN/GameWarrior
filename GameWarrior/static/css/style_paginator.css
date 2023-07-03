@@ -1,0 +1,18 @@
+.site-pagination .inactive {
+	background: #fff;
+}
+
+.site-pagination a,
+.site-pagination span {
+	width: 33px;
+	height: 33px;
+	font-size: 14px;
+	font-weight: 500;
+	padding-top: 7px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 50%;
+	color: #131313;
+	margin-right: 10px;
+	background: #fff;
+}

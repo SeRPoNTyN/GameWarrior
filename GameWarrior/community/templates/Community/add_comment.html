@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load news %}
+{% load comments %}
+<!-- Latest news section -->
+{%  get_recent_news 3  %}
+<!-- Latest news section end -->
+
+{% block content %}
+<!-- Page info section -->
+<section class="page-info-section set-bg" data-setbg="{% static 'img/page-top-bg/4.jpg' %}">
+    <div class="pi-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 text-white">
+                    <h2>Our Community</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
+                        scelerisque, at rutrum nulla dictum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page info section -->
+
+
+
+
+<section class="page-section review-page spad">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3>Comment:</h3>
+                <p>
+                <form action="{%  url 'add_comment'  %}" method="post">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+                    {{ form.non_field.errors }}
+                <button type="submit" class="btn btn-success">Comment</button>
+                </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% get_recent_news 3 %}
+{% endblock %}

@@ -1,0 +1,11 @@
+
+<div class="latest-news-section">
+		<div class="ln-title">Latest News</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+        {% for i in recent_news %}
+				<div class="nt-item"><span class="{% cycle 'cata strategy' 'cata new' 'cata racing' 'cata adventure' %}">{{i.category}}</span>{{i.title}} </div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>

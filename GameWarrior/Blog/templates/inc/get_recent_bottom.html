@@ -1,0 +1,12 @@
+
+
+            {% for news in recent_news_bottom %}
+            <div class="lb-item">
+                <div class="lb-thumb set-bg" data-setbg="{{news.image.url}}"></div>
+                <div class="lb-content">
+                    <div class="lb-date">{{news.created_at}}</div>
+                    <p>{{news.title}}</p>
+                    <a href="#" class="lb-author">By {{news.author}}</a>
+                </div>
+            </div>
+            {% endfor %}

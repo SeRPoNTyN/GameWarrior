@@ -1,0 +1,13 @@
+{% for i in popular_reviews %}
+<div class="widget-item">
+        <div class="review-item">
+            <div class="review-cover set-bg" data-setbg="{{i.game.image.url}}">
+                <div class="score yellow">{{i.score}}</div>
+            </div>
+            <div class="review-text">
+                <h5>{{i.title}}</h5>
+                <p>{{i.content|safe|truncatewords_html:30}}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
